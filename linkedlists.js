@@ -65,7 +65,7 @@ singlyLinkedList.prototype.findNodeAtPosition = function(position) {
 
 //8 9 47 93 76
 
-singleLinkedList.prototype.removeNodeAtPosition = function(position) {
+singlyLinkedList.prototype.removeNodeAtPosition = function(position) {
   //find the node at the specified position
   var currentNode = this.head;
   var length = this.length;
@@ -111,3 +111,84 @@ singleLinkedList.prototype.removeNodeAtPosition = function(position) {
   return deletedNode;
 
 };
+
+
+//8      9       add node here       47      93      76
+
+function addNodeToPosition(list, node, position) {
+  var currentNode = this.head;
+  var length = this.length;
+  var count = 1;
+  var beforeNodeToAdd = null;
+
+  var node = new Node(node);
+  console.log(node);
+
+  if (position < 1) {
+    throw new Error('invalid position');
+  }
+
+  else if (position === (length + 1)) {
+    this.addNode();
+  }
+
+  //if there's only one node in the list
+  else if (position === 1 || length === 0) {
+    this.head = node;
+    length++;
+  }
+
+  //if there's more than one node
+  while (count < position) {
+    beforeNodeToAdd = currentNode;
+    count++;
+  }
+
+  //once the count is equal to the position
+  //set the new node's next value equal to what was the beforeNodeToAdd's next value
+  node.next = beforeNodeToAdd.next;
+  //then reassign the beforeNodeToAdd.next property to the node
+  beforeNodeToAdd.next = node;
+  length++;
+
+  return node;
+}
+
+var list ={ data: 1, next: {
+                            data: 2, next: {
+                                             data: 3, next: null }}};
+
+console.log(addNodeToPosition(list, {data: 8}, 2));
+console.log('new list', list);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//end
